@@ -1,0 +1,8 @@
+services:
+  - docker
+
+before_install:
+  - docker build -t amanpanwar27/react-web -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true amanpanwar27/react-web npm run test
