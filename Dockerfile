@@ -10,7 +10,7 @@ COPY . .
 
 RUN npm run build
 
-
+EXPOSE 80
 FROM nginx:stable-alpine
 
 COPY --from=builderphase /app/build /usr/share/nginx/html
