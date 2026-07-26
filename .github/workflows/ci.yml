@@ -1,0 +1,20 @@
+name: react-web-ci
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Build docker image
+        run: docker build -t amanpanwar27/react-web -f Dockerfile.dev .
+
+      - name: Run docker image
+        run: docker run -e CI=true amanpanwar27/react-web npm run test
